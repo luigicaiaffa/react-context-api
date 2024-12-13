@@ -1,44 +1,48 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { postsContext } from "../contexts/PostsContext";
 
 import Modal from "react-bootstrap/Modal";
 
-export default function Posts() {
-  const [postsData, setPostsData] = useState([]);
+export default function PostsPage() {
+  // const [postsData, setPostsData] = useState([]);
+
+  const { posts } = postsContext();
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const [toDeleteId, setToDeleteId] = useState(undefined);
-  const toDeletePost = postsData.find((post) => post.id === toDeleteId);
+  const toDeletePost = posts.find((post) => post.id === toDeleteId);
 
-  useEffect(() => {
-    fetchPostsData();
-  }, []);
+  // #
+  // useEffect(() => {
+  //   fetchPostsData();
+  // }, []);
 
-  const fetchPostsData = () => {
-    fetch("http://localhost:3000/posts")
-      .then((res) => res.json())
-      .then((data) => {
-        setPostsData(data);
-      });
-  };
+  // const fetchPostsData = () => {
+  //   fetch("http://localhost:3000/posts")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setPostsData(data);
+  //     });
+  // };
 
-  const fetchDeletePost = (id) => {
-    fetch(`http://localhost:3000/posts/${id}`, {
-      method: "DELETE",
-    })
-      .then((res) => res)
-      .then(() => {
-        fetchPostsData();
-      });
-  };
+  // const fetchDeletePost = (id) => {
+  //   fetch(`http://localhost:3000/posts/${id}`, {
+  //     method: "DELETE",
+  //   })
+  //     .then((res) => res)
+  //     .then(() => {
+  //       fetchPostsData();
+  //     });
+  // };
 
-  const handleDeleteButton = (id) => {
-    handleClose();
-    fetchDeletePost(id);
-  };
+  // const handleDeleteButton = (id) => {
+  //   handleClose();
+  //   fetchDeletePost(id);
+  // };
 
   return (
     <>
@@ -59,8 +63,8 @@ export default function Posts() {
             </thead>
 
             <tbody>
-              {postsData &&
-                postsData.map((post) => {
+              {posts &&
+                posts.map((post) => {
                   return (
                     <tr key={post.id}>
                       <th scope="row">
