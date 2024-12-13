@@ -1,13 +1,13 @@
 import { useState } from "react";
 
-import { postsContext } from "../contexts/PostsContext";
+import { postsContext } from "../../contexts/PostsContext";
 
 import Modal from "react-bootstrap/Modal";
 import TableRow from "./TableRow";
 
 export default function PostsTable() {
   // * Posts Data
-  const { posts } = postsContext();
+  const { posts, deletePost } = postsContext();
 
   // * Delete Modal Handler
   const [show, setShow] = useState(false);
@@ -16,6 +16,11 @@ export default function PostsTable() {
 
   const [toDeleteId, setToDeleteId] = useState(undefined);
   const toDeletePost = posts.find((post) => post.id === toDeleteId);
+
+  const handleDeleteButton = (id) => {
+    handleClose();
+    deletePost(id);
+  };
 
   return (
     <>

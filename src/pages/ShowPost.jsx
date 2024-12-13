@@ -69,7 +69,7 @@ export default function ShowPost() {
                     </li>
                     <li className="list-group-item">
                       <div className="card-text">
-                        <strong>Contenuto</strong>
+                        <strong>Contenuto: </strong>
                         {postData.content}
                       </div>
                     </li>
@@ -82,7 +82,7 @@ export default function ShowPost() {
                     <li className="list-group-item">
                       <div className="card-text">
                         <p>
-                          <strong>Stato Pubblicazione:</strong>
+                          <strong>Stato Pubblicazione: </strong>
                           {postData.pubblished ? (
                             <i className="ms-2 fa-solid fa-square-check text-success"></i>
                           ) : (
