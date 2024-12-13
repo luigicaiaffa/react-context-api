@@ -10,6 +10,7 @@ import Posts from "./pages/Posts";
 import ShowPost from "./pages/ShowPost";
 import NotFound from "./pages/NotFound";
 
+
 function App() {
   return (
     <BrowserRouter>
