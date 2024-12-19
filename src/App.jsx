@@ -10,7 +10,6 @@ import DefaultLayout from "./layout/DefaultLayout";
 import HomePage from "./pages/HomePage";
 import About from "./pages/About";
 import PostsPage from "./pages/PostsPage";
-import ShowPost from "./pages/ShowPost";
 import NotFound from "./pages/NotFound";
 
 function App() {
@@ -22,7 +21,6 @@ function App() {
             <Route path="/" Component={HomePage} />
             <Route path="/about" Component={About} />
             <Route path="/posts" Component={PostsPage} />
-            <Route path="/posts/:id" Component={ShowPost} />
             <Route path="/not-found" Component={NotFound} />
           </Route>
         </Routes>

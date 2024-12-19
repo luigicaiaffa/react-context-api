@@ -8,7 +8,7 @@ export default function TableRow({
   category,
   pubblished,
   handleShow,
-  setToDeleteId,
+  setSelectedPostId,
 }) {
   return (
     <tr>
@@ -28,22 +28,6 @@ export default function TableRow({
         ) : (
           <i className="fa-solid fa-square-xmark text-danger"></i>
         )}
-      </td>
-      <td>
-        <div className="d-flex justify-content-end">
-          <NavLink to={`/posts/${id}`} className="btn btn-light ms-1">
-            <i className="fa-solid fa-circle-info"></i>
-          </NavLink>
-          <button
-            className="btn btn-danger ms-1"
-            onClick={() => {
-              setToDeleteId(id);
-              handleShow();
-            }}
-          >
-            <i className="fa-solid fa-trash"></i>
-          </button>
-        </div>
       </td>
     </tr>
   );

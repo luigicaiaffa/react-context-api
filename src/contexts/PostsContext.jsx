@@ -4,45 +4,60 @@ import { createContext, useContext } from "react";
 const PostsContext = createContext();
 
 export const PostsContextProvider = ({ children }) => {
-  const fetchPostsData = () => {
-    fetch("http://localhost:3000/posts")
-      .then((res) => res.json())
-      .then((data) => {
-        const posts = data.map((post) => ({
-          id: post.id,
-          title: post.title,
-          author: post.author,
-          content: post.content,
-          image: post.image,
-          category: post.category,
-          pubblished: post.pubblished,
-        }));
-
-        const newPostsData = { ...postsData, posts };
-        console.log(newPostsData);
-
-        setPostsData(newPostsData);
-      });
+  const postsData = {
+    posts: [
+      {
+        id: 1,
+        title: "Ciambellone",
+        author: "Tizio",
+        content:
+          "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque blanditiis, magnam nihil iste laudantium illo.",
+        image: "./src/assets/img/ciambellone.jpeg",
+        category: "Dolci",
+        pubblished: true,
+      },
+      {
+        id: 2,
+        title: "Cracker alla Barbabietola",
+        author: "Tizio",
+        content:
+          "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque blanditiis, magnam nihil iste laudantium illo.",
+        image: "./src/assets/img/cracker_barbabietola.jpeg",
+        category: "Snack",
+        pubblished: false,
+      },
+      {
+        id: 3,
+        title: "Pane Fritto Dolce",
+        author: "Tizio",
+        content:
+          "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque blanditiis, magnam nihil iste laudantium illo.",
+        image: "./src/assets/img/pane_fritto_dolce.jpeg",
+        category: "Dolci",
+        pubblished: true,
+      },
+      {
+        id: 4,
+        title: "Rigatoni alla barbabietola",
+        author: "Tizio",
+        content:
+          "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque blanditiis, magnam nihil iste laudantium illo.",
+        image: "./src/assets/img/pasta_barbabietola.jpeg",
+        category: "Primi",
+        pubblished: true,
+      },
+      {
+        id: 5,
+        title: "Torta Paesana",
+        author: "Tizio",
+        content:
+          "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque blanditiis, magnam nihil iste laudantium illo.",
+        image: "./src/assets/img/torta_paesana.jpeg",
+        category: "Dolci",
+        pubblished: false,
+      },
+    ],
   };
-
-  const fetchDeletePost = (id) => {
-    fetch(`http://localhost:3000/posts/${id}`, {
-      method: "DELETE",
-    })
-      .then((res) => res)
-      .then(() => {
-        fetchPostsData();
-      });
-  };
-
-  const [postsData, setPostsData] = useState({
-    posts: [],
-    deletePost: fetchDeletePost,
-  });
-
-  useEffect(() => {
-    fetchPostsData();
-  }, []);
 
   return (
     <PostsContext.Provider value={postsData}>{children}</PostsContext.Provider>
